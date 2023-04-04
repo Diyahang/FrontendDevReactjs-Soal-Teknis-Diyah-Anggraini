@@ -11,8 +11,8 @@ import {
   Rating,
   Stack,
   Typography,
-  Link,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { slice } from "lodash";
 import { useState } from "react";
@@ -78,7 +78,7 @@ const ComponentList = () => {
           </CardContent>
 
           <CardActions>
-            <Link href={`/detail/${id}`} underline="none">
+            <Link to={`/detail/${id}`} style={{ textDecoration: "none" }}>
               <Button
                 variant="contained"
                 size="small"
