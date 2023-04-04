@@ -6,18 +6,33 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Container,
+  Grid,
   Rating,
   Stack,
   Typography,
+  Link,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { slice } from "lodash";
+import { useState } from "react";
 
 const ComponentList = () => {
-  const restoList = useSelector((state) => state.allRestos.restos);
+  const restoList = useSelector((state) => state.allRestos.restos.restaurants);
+  const [index, setIndex] = useState(8);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const initialPosts = slice(restoList, 0, index);
 
-  const renderList = restoList.restaurants?.map((resto) => {
-    restoList.restaurants?.filter((index) => index % 4 === 0);
+  const loadMore = () => {
+    setIndex(index + 8);
+    if (index >= restoList.length) {
+      setIsCompleted(true);
+    } else {
+      setIsCompleted(false);
+    }
+  };
+
+  const renderList = initialPosts.map((resto) => {
     const { id, name, rating, pictureId, city } = resto;
     return (
       <Box key={id}>
@@ -63,7 +78,7 @@ const ComponentList = () => {
           </CardContent>
 
           <CardActions>
-            <Link to={`/detail/${id}`}>
+            <Link href={`/detail/${id}`} underline="none">
               <Button
                 variant="contained"
                 size="small"
@@ -79,12 +94,57 @@ const ComponentList = () => {
             </Link>
           </CardActions>
         </Card>
-
         {/* end card */}
       </Box>
     );
   });
-  return <>{renderList}</>;
+
+  return (
+    <>
+      <Container maxWidth="xl">
+        <Grid
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 6, sm: 8, md: 12 }}
+          gap={2}
+        >
+          {renderList}
+        </Grid>
+      </Container>
+      <Box sx={{ mt: 4, textAlign: "center" }}>
+        {isCompleted ? (
+          <Button
+            onClick={loadMore}
+            disabled
+            variant="outlined"
+            sx={{
+              borderRadius: 0,
+              color: "#00004d",
+              borderColor: "#00004d",
+              minWidth: 320,
+              maxWidth: 120,
+            }}
+          >
+            LOAD MORE
+          </Button>
+        ) : (
+          <Button
+            onClick={loadMore}
+            variant="outlined"
+            sx={{
+              borderRadius: 0,
+              color: "#00004d",
+              borderColor: "#00004d",
+              minWidth: 320,
+              maxWidth: 120,
+            }}
+          >
+            LOAD MORE
+          </Button>
+        )}
+      </Box>
+    </>
+  );
 };
 
 export default ComponentList;

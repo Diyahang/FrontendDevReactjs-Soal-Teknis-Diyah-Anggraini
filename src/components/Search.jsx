@@ -20,7 +20,12 @@ const Search = () => {
           position="static"
           color="inherit"
           elevation={0}
-          sx={{ border: "1px solid gray", flexGrow: 1 }}
+          sx={{
+            border: "1px solid gray",
+            flexGrow: 1,
+            borderLeft: "none",
+            borderRight: "none",
+          }}
         >
           <Container maxWidth="xl">
             <Toolbar>
