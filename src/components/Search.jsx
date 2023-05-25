@@ -31,7 +31,7 @@ const Search = () => {
             <Toolbar>
               <Box sx={{ flexGrow: 1, display: { xs: "flex" } }}>
                 <Typography sx={{ padding: "4px", color: "gray", mt: 1.4 }}>
-                  Filter By:
+                  Filter Search By :
                 </Typography>
                 {/* open */}
                 <FormControl>

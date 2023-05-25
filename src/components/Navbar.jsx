@@ -12,6 +12,7 @@ const Navbar = () => {
             </Typography>
           </Link>
           <Typography subtitle1="h2" color="gray">
+            this is the 5 stars restaurant
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et illum
             labore inventore. <br /> Tenetur quos dignissimos nemo cumque odio
             suscipit
