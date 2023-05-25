@@ -28,7 +28,7 @@ const List = () => {
     <div className="list">
       <Box sx={{ padding: 2, ml: 4 }}>
         <Typography variant="h5" sx={{ fontWeight: 10, mb: 6 }}>
-          All Restaurants
+          All List Restaurants
         </Typography>
         <ComponentList />
       </Box>
